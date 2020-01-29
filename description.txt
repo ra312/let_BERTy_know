@@ -1,0 +1,14 @@
+Rauan Akylzhanov
+25-26 January 2020
+Adapting BERT to detect spammed SMS
+It is impossible to image the world without modern communication systems: E-mail, Skype, SMS. Spamming is a malicious activity of sending as unsolicited bulk messages to groups of people. With the rise of modern data storage and processing tools and the rise of the number of people possessing phones, SMSs spamming has significantly increased.
+I aim to describe a small Python script which can label a short text message as either spam or ham. My problem consists of choosing/creating a program which can classify text messages (possibly under supervision).  There are several common algorithms such as Supervised Latent Dirichlet Allocation, Support Vector Machine, Binomial Logistic Regression, Naive Bayes, Word2Vec+recurrent neural network.
+Typically, one has to train them and provide ‘enough’ data.  With my limited time and hardware resources and not much data, it seemed best to use a pre-trained model. From the papers I've seen, the accuracy of these algorithms were at most % 80 with huge data (~ 3M words).
+Omitting tons of details and roughly summarising, the above mentioned algorithms (neural networks) count sufficient text possibly coupled with a mapping from words into numbers (word2vec, one-hot encoding etc). It looked that I did not have enough data for the counting algorithms and I wanted to avoid long training time for recurrent neural networks and the accuracy between %50-%80. In my last experiment, I classified wine reviews adding a GloVe embedding as a Keras input layer and adding two dense Keras layers. I achieved the accuracy of %50 having 100k samples. 
+Heuristically, when I read a suspicious message I somehow can recall the contexts of many more messages I read in my life. What if we had an algorithm that could shift his attention to any messages or scan through his memory? Google-assisted with translation of my heuristic terms into natural language science,  I discovered that Google has recently developed an attention mechanism called Transformer to the common neural net architecture.  
+Fine-tuning large pre-trained models is an effective transfer mechanism in natural language processing. The resulting architecture is called BERT which stands for Bidirectional Encode Representation Transformer. In the follow-up paper, the researchers showed how to adapt the pre-trained BERT model to a specific problem. The word adapt means changing a small subset the models weights.
+
+
+In my situation, I wanted to get the maximum accuracy training my model on a MacBook. Therefore I chose to adapt BERT model for my specific data. I achieved the accuracy of % 96 in 2 epochs. I have not yet measured the time, but it took approximately 30 minutes. I have not yet tuned hyperparameters.
+
+
