@@ -251,20 +251,19 @@ if __name__ == '__main__':
 		model.load_weights(trained_ckpt_file)
 	else:
 		log_dir = join(output_folder, "log", datetime.datetime.now().strftime("%Y%m%d-%H%M%s"))
-		#tensorboard_callback = TensorBoard(log_dir=log_dir)
-		lr_scheduler = \
-			pf.utils.create_one_cycle_lr_scheduler(
+		tensorboard_callback = TensorBoard(log_dir=log_dir)
+		lr_scheduler = pf.utils.create_one_cycle_lr_scheduler(
 				max_learn_rate=5e-3,  # experimental value!
 				end_learn_rate=1e-6,  # experimental value!
 				warmup_epoch_count=1,  # distort the initial values
 				total_epoch_count=total_epoch_count)
 		steps_per_epoch = expected_number_spam // batch_size
-
+		steps_per_epoch = 2500 // batch_size
+		early_stopping =  EarlyStopping(patience=10, restore_best_weights=True, monitor='loss')
+		callbacks = [lr_scheduler, early_stopping, tensorboard_callback]
 		history = model.fit(train_data, shuffle=True,
-		 						epochs=total_epoch_count, steps_per_epoch=steps_per_epoch)
-		# 						callbacks={lr_scheduler, EarlyStopping(patience=10, restore_best_weights=True, monitor='loss')
-      #                                               #,tensorboard_callback
-		# 										})
+		 						epochs=total_epoch_count, steps_per_epoch=steps_per_epoch,
+		 						callbacks=callbacks)
 		#
 		# model.save_weights(trained_ckpt_file, overwrite=True)
 
