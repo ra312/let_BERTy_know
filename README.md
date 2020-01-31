@@ -1,10 +1,9 @@
 OS: MacOS Mojave 10.14.4
 Python 3.7.6
 
-#python modules
-#not a full list, need to create conda env
-tensorflow==2.1.0	
-bert-for-tf2==0.13.4
+conda 4.7.12
+conda env create --name envname --file=environments.yml
+Python 3.7.6
 
 python make_berty_up.py
 
@@ -25,20 +24,3 @@ Evaluating the model, we get
 train_acc: 0.96875
 test_acc: 0.96875
 
-I fine-tune the pre-trained model ?freezing? BERT layer.
-We compose BERT layer with Dense and Normalization and Activation
-Total params: 109,077,146
-Trainable params: 223,898
-Non-trainable params: 108,853,248
-I select butch_size*buffer_size= number_of_labels_spam
-batch_size = 16
-I assume we have 100 words at most
-max_seq_len = 100 
-Empirical quantity, looking at the size 5547 messages
-adapter_size = 4
-Two epochs looks enough
-total_epoch_count  = 2
-From the formula above
-buffer_size = 47
-%13,4 of 5574 messages
-expected_number_spam = 747
