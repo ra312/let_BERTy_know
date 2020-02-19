@@ -1,6 +1,7 @@
+#Environment
 OS: MacOS Mojave 10.14.4
 Python 3.7.6
-
+#Requirements
 conda 4.7.12
 conda env create --name envname --file=environments.yml
 Python 3.7.6
