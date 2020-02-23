@@ -56,7 +56,7 @@ bert_ckpt_file = join(model_dir, 'bert_model.ckpt')
 def parse_raw_to_csv(raw_file='SMSSpam'):
 	print(f"\n parsing {raw_file} into SMSSpam.csv ...")
 	infile = open(raw_file, 'r')
-	outfile = open('SMSSpam.csv', 'w', newline='')
+	outfile = open('./data/SMSSpam.csv', 'w', newline='')
 	columns = ['label', 'feature']
 	spamwriter = csv.DictWriter(outfile, fieldnames=columns)
 	spamwriter.writeheader()
