@@ -55,5 +55,5 @@ jupyter-http-over-ws==0.0.7
 appnope
 #sys_platform =="darwin"
 backcall
-ipython==7.4.0
+ipython==7.16.3
 bert-for-tf2==0.13.2
