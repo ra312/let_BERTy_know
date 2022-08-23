@@ -45,11 +45,11 @@ pymobiledevice==1.2.0
 Faker
 pydbgen==1.0.5
 bleach
-nbconvert==5.4.1
+nbconvert==6.5.1
 defusedxml
-nbconvert==5.4.1
+nbconvert==6.5.1
 entrypoints>=0.2.2
-nbconvert==5.4.1
+nbconvert==6.5.1
 enum== 0.4.6
 jupyter-http-over-ws==0.0.7
 appnope
